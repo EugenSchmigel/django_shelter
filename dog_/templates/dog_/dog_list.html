@@ -1,0 +1,32 @@
+{% extends 'dog_/base.html' %}
+{% load my_tags %}
+{% block content %}
+    <div class="row">
+        {% if perms.dog_.add_dog %}
+            <div class="col-12 mb-5">
+                <a class="btn btn-primary" href="{% url 'dog_:dog_create'%}">Добавить собаку</a>
+            </div>
+        {% endif %}
+        {% for object in object_list %}
+        <div class="col-md-4">
+          <div class="card mb-4 box-shadow">
+            <img class="card-img-top"
+                 {#src="/media/{{ object.photo }}"#}
+                 src="{{ object.photo|mymedia }}"
+                 alt="Card image cap">
+            <div class="card-body">
+              <p class="card-text">{{ object.name | title }}</p>
+
+                <span class="text-muted"> Birthday: {{ object.birth_day|default:"-" }} </span> <br>
+                <span class="text-muted"> Owner: {{ object.owner|default:"no owner" }} </span>
+
+            </div>
+          <div class="card-footer">
+            <a class="btn btn-link" href="{% url 'dog_:dog_update' object.pk %}">изменить</a>
+            <a class="btn btn-outline-danger float-right" href="{% url 'dog_:dog_delete' object.pk %}">удалить</a>
+          </div>
+          </div>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock%}
