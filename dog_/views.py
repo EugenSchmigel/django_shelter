@@ -8,7 +8,7 @@ from django.views.generic import ListView, CreateView, UpdateView, DeleteView, T
 
 from dog_.forms import DogForm, ParentForm
 from dog_.models import Category, Dog, Parent
-from dog_.services import cache_category
+# from dog_.services import cache_category
 
 
 class IndexView(TemplateView):
@@ -29,7 +29,7 @@ class CategoryListView(LoginRequiredMixin, ListView):
     model = Category
     extra_context = {'title': 'Shelter - All our breeds'}
 
-    cache_category()
+    # cache_category()
 
 
 class DogListView(LoginRequiredMixin, ListView):

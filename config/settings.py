@@ -146,12 +146,15 @@ EMAIL_USE_SSL = True
 
 
 
-CACHE_ENABLED = os.getenv('CACHE_ENABLED') == 'True'
+# CACHE_ENABLED = os.getenv('CACHE_ENABLED') == 'True'
+#
+# if CACHE_ENABLED:
+#     CACHES = {
+#         "default": {
+#             "BACKEND": "django.core.cache.backends.redis.RedisCache",
+#             "LOCATION": os.getenv('CACHES_LOCATION'),
+#         }
+#     }
 
-if CACHE_ENABLED:
-    CACHES = {
-        "default": {
-            "BACKEND": "django.core.cache.backends.redis.RedisCache",
-            "LOCATION": os.getenv('CACHES_LOCATION'),
-        }
-    }
+
+TELEGRAM_TOKEN = '7340990573:AAEZKN3aUBJ48mvMYFcAajDBXfJohSHemjc'
